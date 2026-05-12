@@ -206,7 +206,4 @@ See [docs/INGESTION.md](docs/INGESTION.md).
 - Background worker queue for ingestion.
 - CDN/image proxy and screenshot caching.
 - Mobile app wrapper or native app after the web product proves usage.
-
-## License
-
-Private project scaffold. Add a license before publishing publicly.
+  
