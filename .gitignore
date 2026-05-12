@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Runtime data and generated files
+data/listings.json
+*.tmp
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Build and cache output
+dist/
+build/
+coverage/
+.cache/
+.next/
+.nuxt/
+
+# Cloud/local tooling
+.terraform/
+terraform.tfstate*
+.serverless/

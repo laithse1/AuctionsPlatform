@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auctionhub
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: auctionhub
+  template:
+    metadata:
+      labels:
+        app: auctionhub
+    spec:
+      containers:
+        - name: auctionhub
+          image: auctionhub:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          env:
+            - name: PORT
+              value: "8080"
+            - name: DATA_FILE
+              value: /app/data/listings.json
+            - name: PROVIDERS_FILE
+              value: /app/config/providers.json
+            - name: INGEST_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: auctionhub-secrets
+                  key: ingest-token
+          readinessProbe:
+            httpGet:
+              path: /api/health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auctionhub
+spec:
+  selector:
+    app: auctionhub
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer

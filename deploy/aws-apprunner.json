@@ -1,0 +1,22 @@
+{
+  "ServiceName": "auctionhub",
+  "SourceConfiguration": {
+    "ImageRepository": {
+      "ImageIdentifier": "<account-id>.dkr.ecr.<region>.amazonaws.com/auctionhub:latest",
+      "ImageRepositoryType": "ECR",
+      "ImageConfiguration": {
+        "Port": "8080",
+        "RuntimeEnvironmentVariables": {
+          "PORT": "8080",
+          "DATA_FILE": "/app/data/listings.json",
+          "PROVIDERS_FILE": "/app/config/providers.json"
+        }
+      }
+    },
+    "AutoDeploymentsEnabled": true
+  },
+  "InstanceConfiguration": {
+    "Cpu": "0.5 vCPU",
+    "Memory": "1 GB"
+  }
+}

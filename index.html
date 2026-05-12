@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AuctionHub | Salvage Auction Browser</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">AuctionHub MVP</p>
+        <h1>Browse auction cars from one place</h1>
+        <p id="feedStatus" class="feed-status">Loading feed...</p>
+      </div>
+      <div class="top-actions">
+        <button id="savedToggle" class="icon-button" type="button" title="Show saved listings" aria-label="Show saved listings">
+          <span aria-hidden="true">*</span>
+          <strong id="savedCount">0</strong>
+        </button>
+        <button id="refreshButton" class="icon-button" type="button" title="Refresh listings" aria-label="Refresh listings">
+          Refresh
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="search-panel" aria-label="Search and filters">
+        <div class="search-row">
+          <label class="search-box">
+            <span>Search</span>
+            <input id="searchInput" type="search" placeholder="Make, model, VIN, location, damage..." />
+          </label>
+          <label>
+            <span>Source</span>
+            <select id="sourceFilter">
+              <option value="all">All auctions</option>
+            </select>
+          </label>
+          <label>
+            <span>Damage</span>
+            <select id="damageFilter">
+              <option value="all">All damage</option>
+            </select>
+          </label>
+          <label>
+            <span>Max bid</span>
+            <input id="maxBidFilter" type="number" min="0" step="500" placeholder="Any" />
+          </label>
+        </div>
+
+        <div class="quick-filters" role="group" aria-label="Risk filters">
+          <button class="pill active" type="button" data-risk="all">All</button>
+          <button class="pill" type="button" data-risk="low">Low risk</button>
+          <button class="pill" type="button" data-risk="watch">Needs review</button>
+          <button class="pill" type="button" data-risk="high">High risk</button>
+        </div>
+      </section>
+
+      <section class="summary-strip" aria-label="Inventory summary">
+        <article>
+          <span id="totalListings">0</span>
+          <p>active listings</p>
+        </article>
+        <article>
+          <span id="dedupeCount">0</span>
+          <p>possible duplicates</p>
+        </article>
+        <article>
+          <span id="avgBid">$0</span>
+          <p>average current bid</p>
+        </article>
+        <article>
+          <span id="endingSoon">0</span>
+          <p>ending within 48h</p>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <aside class="watchlist">
+          <div class="panel-heading">
+            <h2>Saved</h2>
+            <button id="clearSaved" type="button">Clear</button>
+          </div>
+          <div id="savedList" class="saved-list"></div>
+        </aside>
+
+        <section aria-label="Auction listings">
+          <div class="listing-toolbar">
+            <p id="resultCount">Showing 0 listings</p>
+            <label>
+              <span>Sort</span>
+              <select id="sortSelect">
+                <option value="ending">Ending soon</option>
+                <option value="dealDesc">Best deal score</option>
+                <option value="confidenceDesc">Highest confidence</option>
+                <option value="priceAsc">Current bid: low to high</option>
+                <option value="priceDesc">Current bid: high to low</option>
+                <option value="yearDesc">Newest year</option>
+              </select>
+            </label>
+          </div>
+          <div id="listingGrid" class="listing-grid"></div>
+        </section>
+      </section>
+    </main>
+
+    <template id="listingTemplate">
+      <article class="listing-card">
+        <div class="media">
+          <img alt="" loading="lazy" />
+          <button class="save-button" type="button" title="Save listing" aria-label="Save listing">+</button>
+          <span class="source-badge"></span>
+        </div>
+        <div class="card-body">
+          <div class="title-line">
+            <h3></h3>
+            <span class="risk-badge"></span>
+          </div>
+          <div class="intelligence-line">
+            <span class="score-badge"></span>
+            <span class="notes"></span>
+          </div>
+          <p class="meta"></p>
+          <dl class="price-grid">
+            <div>
+              <dt>Current bid</dt>
+              <dd class="bid"></dd>
+            </div>
+            <div>
+              <dt>Est. total</dt>
+              <dd class="total"></dd>
+            </div>
+            <div>
+              <dt>Ends</dt>
+              <dd class="ends"></dd>
+            </div>
+          </dl>
+          <div class="flags"></div>
+          <div class="duplicate"></div>
+          <div class="card-actions">
+            <a class="primary-link" target="_blank" rel="noopener">View auction</a>
+            <button class="details-button" type="button">Details</button>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>

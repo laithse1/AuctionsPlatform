@@ -1,0 +1,13 @@
+services:
+  auctionhub:
+    build: .
+    ports:
+      - "4173:8080"
+    environment:
+      PORT: "8080"
+      INGEST_TOKEN: "${INGEST_TOKEN:-change-this-before-production}"
+      DATA_FILE: "/app/data/listings.json"
+      PROVIDERS_FILE: "/app/config/providers.json"
+    volumes:
+      - ./data:/app/data
+      - ./config:/app/config:ro

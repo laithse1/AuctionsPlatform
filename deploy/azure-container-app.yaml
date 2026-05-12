@@ -1,0 +1,29 @@
+properties:
+  configuration:
+    ingress:
+      external: true
+      targetPort: 8080
+    secrets:
+      - name: ingest-token
+        value: change-this-before-production
+  template:
+    containers:
+      - name: auctionhub
+        image: <registry>.azurecr.io/auctionhub:latest
+        env:
+          - name: PORT
+            value: "8080"
+          - name: DATA_FILE
+            value: /app/data/listings.json
+          - name: PROVIDERS_FILE
+            value: /app/config/providers.json
+          - name: INGEST_TOKEN
+            secretRef: ingest-token
+        probes:
+          - type: Readiness
+            httpGet:
+              path: /api/health
+              port: 8080
+  scale:
+    minReplicas: 1
+    maxReplicas: 5

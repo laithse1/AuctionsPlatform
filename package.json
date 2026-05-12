@@ -1,0 +1,20 @@
+{
+  "name": "auctionhub",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Unified browsing and ingestion MVP for online vehicle auction listings.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "ingest": "node scripts/ingest.js",
+    "dev": "node server.js",
+    "test": "node --test tests/*.test.js",
+    "check": "node --check server.js && node --check scripts/ingest.js && node --check src/ingestion/pipeline.js && node --check src/ingestion/intelligence.js && node --check src/ingestion/adapters/websiteCrawler.js && node --check src/ingestion/adapters/renderedCrawler.js && node --check src/ingestion/sourceParsers.js && node --check src/ingestion/robots.js && node --check app.js"
+  },
+  "dependencies": {
+    "playwright": "^1.52.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

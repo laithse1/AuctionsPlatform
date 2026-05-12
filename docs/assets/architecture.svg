@@ -1,0 +1,49 @@
+<svg width="1120" height="520" viewBox="0 0 1120 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">AuctionHub architecture</title>
+  <desc id="desc">Provider websites flow through crawlers, parsers, normalization, intelligence, API, and web UI.</desc>
+  <rect width="1120" height="520" rx="24" fill="#F7FAF6"/>
+  <rect x="44" y="52" width="190" height="392" rx="16" fill="#FFFFFF" stroke="#D7E4DC"/>
+  <text x="74" y="92" fill="#14241D" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="800">Auction Sources</text>
+  <g fill="#EEF5F1">
+    <rect x="74" y="126" width="130" height="34" rx="8"/>
+    <rect x="74" y="174" width="130" height="34" rx="8"/>
+    <rect x="74" y="222" width="130" height="34" rx="8"/>
+    <rect x="74" y="270" width="130" height="34" rx="8"/>
+    <rect x="74" y="318" width="130" height="34" rx="8"/>
+    <rect x="74" y="366" width="130" height="34" rx="8"/>
+  </g>
+  <text x="96" y="148" fill="#40534B" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700">Copart</text>
+  <text x="96" y="196" fill="#40534B" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700">IAAI</text>
+  <text x="96" y="244" fill="#40534B" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700">SCA</text>
+  <text x="96" y="292" fill="#40534B" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700">A Better Bid</text>
+  <text x="96" y="340" fill="#40534B" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700">AutoBidMaster</text>
+  <text x="96" y="388" fill="#40534B" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700">Cars4Bid</text>
+  <path d="M248 248H313" stroke="#8DA69A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M303 236L318 248L303 260" stroke="#8DA69A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="330" y="72" width="190" height="116" rx="16" fill="#FFFFFF" stroke="#D7E4DC"/>
+  <text x="360" y="116" fill="#14241D" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800">Rendered Crawler</text>
+  <text x="360" y="146" fill="#66716B" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">Playwright + static fallback</text>
+  <rect x="330" y="216" width="190" height="116" rx="16" fill="#FFFFFF" stroke="#D7E4DC"/>
+  <text x="360" y="260" fill="#14241D" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800">Source Parsers</text>
+  <text x="360" y="290" fill="#66716B" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">Provider-specific extraction</text>
+  <rect x="330" y="360" width="190" height="84" rx="16" fill="#FFFFFF" stroke="#D7E4DC"/>
+  <text x="360" y="409" fill="#14241D" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800">JSON Feeds</text>
+  <path d="M532 248H597" stroke="#8DA69A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M587 236L602 248L587 260" stroke="#8DA69A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="620" y="72" width="210" height="116" rx="16" fill="#FFFFFF" stroke="#D7E4DC"/>
+  <text x="650" y="116" fill="#14241D" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800">Normalize</text>
+  <text x="650" y="146" fill="#66716B" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">VIN, price, title, damage</text>
+  <rect x="620" y="216" width="210" height="116" rx="16" fill="#FFFFFF" stroke="#D7E4DC"/>
+  <text x="650" y="260" fill="#14241D" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800">Intelligence</text>
+  <text x="650" y="290" fill="#66716B" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600">Deal score, risk, confidence</text>
+  <rect x="620" y="360" width="210" height="84" rx="16" fill="#FFFFFF" stroke="#D7E4DC"/>
+  <text x="650" y="409" fill="#14241D" font-family="Inter, Arial, sans-serif" font-size="19" font-weight="800">Dedupe</text>
+  <path d="M842 248H907" stroke="#8DA69A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M897 236L912 248L897 260" stroke="#8DA69A" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="930" y="102" width="150" height="116" rx="16" fill="#0E7C66"/>
+  <text x="964" y="152" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">API</text>
+  <text x="964" y="182" fill="#D9F4EA" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700">/api/listings</text>
+  <rect x="930" y="272" width="150" height="116" rx="16" fill="#FFFFFF" stroke="#D7E4DC"/>
+  <text x="964" y="322" fill="#14241D" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">Web UI</text>
+  <text x="964" y="352" fill="#66716B" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700">Search + compare</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg width="1280" height="520" viewBox="0 0 1280 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">AuctionHub product banner</title>
+  <desc id="desc">A dashboard-style banner showing auction vehicle cards, scoring, and provider feeds.</desc>
+  <rect width="1280" height="520" fill="#101a16"/>
+  <path d="M0 0H1280V520H0V0Z" fill="url(#paint0_linear)"/>
+  <rect x="70" y="70" width="1140" height="380" rx="24" fill="#F7FAF6"/>
+  <rect x="100" y="102" width="270" height="316" rx="14" fill="#FFFFFF" stroke="#D7E4DC"/>
+  <rect x="123" y="130" width="224" height="132" rx="10" fill="#DDE7E2"/>
+  <path d="M153 225L187 181L219 218L244 189L317 225H153Z" fill="#8DB8A8"/>
+  <circle cx="286" cy="164" r="21" fill="#F5C46B"/>
+  <rect x="123" y="284" width="168" height="20" rx="10" fill="#14241D"/>
+  <rect x="123" y="316" width="116" height="12" rx="6" fill="#789086"/>
+  <rect x="123" y="344" width="78" height="28" rx="7" fill="#DDF3EA"/>
+  <rect x="213" y="344" width="86" height="28" rx="7" fill="#FFF0D4"/>
+  <rect x="390" y="102" width="270" height="316" rx="14" fill="#FFFFFF" stroke="#D7E4DC"/>
+  <rect x="413" y="130" width="224" height="132" rx="10" fill="#DDE7E2"/>
+  <path d="M436 225L477 176L516 215L546 185L615 225H436Z" fill="#7DABC1"/>
+  <circle cx="583" cy="161" r="21" fill="#F5C46B"/>
+  <rect x="413" y="284" width="174" height="20" rx="10" fill="#14241D"/>
+  <rect x="413" y="316" width="140" height="12" rx="6" fill="#789086"/>
+  <rect x="413" y="344" width="86" height="28" rx="7" fill="#DDF3EA"/>
+  <rect x="511" y="344" width="84" height="28" rx="7" fill="#FFE2E6"/>
+  <rect x="680" y="102" width="220" height="316" rx="14" fill="#FFFFFF" stroke="#D7E4DC"/>
+  <text x="706" y="148" fill="#14241D" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Deal Signal</text>
+  <circle cx="790" cy="235" r="72" fill="#E2F6EE"/>
+  <path d="M755 237L780 262L829 205" stroke="#0E7C66" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="718" y="332" width="144" height="18" rx="9" fill="#0E7C66"/>
+  <rect x="718" y="364" width="106" height="12" rx="6" fill="#789086"/>
+  <rect x="920" y="102" width="260" height="316" rx="14" fill="#FFFFFF" stroke="#D7E4DC"/>
+  <text x="950" y="148" fill="#14241D" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800">Live Providers</text>
+  <rect x="950" y="178" width="198" height="34" rx="8" fill="#EEF5F1"/>
+  <rect x="950" y="228" width="198" height="34" rx="8" fill="#EEF5F1"/>
+  <rect x="950" y="278" width="198" height="34" rx="8" fill="#EEF5F1"/>
+  <rect x="950" y="328" width="198" height="34" rx="8" fill="#EEF5F1"/>
+  <circle cx="970" cy="195" r="7" fill="#0E7C66"/>
+  <circle cx="970" cy="245" r="7" fill="#0E7C66"/>
+  <circle cx="970" cy="295" r="7" fill="#A35D00"/>
+  <circle cx="970" cy="345" r="7" fill="#0E7C66"/>
+  <text x="992" y="201" fill="#40534B" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700">Rendered crawler</text>
+  <text x="992" y="251" fill="#40534B" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700">Risk scoring</text>
+  <text x="992" y="301" fill="#40534B" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700">Dedupe engine</text>
+  <text x="992" y="351" fill="#40534B" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700">Cloud-ready API</text>
+  <text x="100" y="56" fill="#D9F4EA" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="800">AuctionHub</text>
+  <text x="213" y="56" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="600">one search layer for auction cars</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="0" y1="0" x2="1280" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E7C66"/>
+      <stop offset="0.55" stop-color="#12352D"/>
+      <stop offset="1" stop-color="#1E2A25"/>
+    </linearGradient>
+  </defs>
+</svg>
