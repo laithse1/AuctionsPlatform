@@ -35,7 +35,14 @@ async function fetchRenderedPage(page, url, provider) {
     }
   }
 
-  return page.content();
+  const html = await page.content();
+  const bodyText = await page.locator("body").innerText().catch(() => "");
+
+  if (/^\s*403\s+Forbidden\s*$/i.test(bodyText) || /<title>\s*403\s+Forbidden\s*<\/title>/i.test(html)) {
+    throw new Error(`Rendered fetch blocked with 403 for ${url}`);
+  }
+
+  return html;
 }
 
 async function fetchListings(provider) {

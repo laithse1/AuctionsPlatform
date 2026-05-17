@@ -1,6 +1,6 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { parseCapitalAutoAuction } = require("../src/ingestion/sourceParsers");
+const { parseCapitalAutoAuction, parseKBid } = require("../src/ingestion/sourceParsers");
 const { enrichListingIntelligence } = require("../src/ingestion/intelligence");
 
 test("Capital Auto Auction parser extracts inventory cards", () => {
@@ -65,4 +65,35 @@ test("listing intelligence adds buyer-facing scores and notes", () => {
   assert.ok(enriched.confidenceScore >= 90);
   assert.ok(enriched.dealScore > 70);
   assert.equal(enriched.feeEstimateComplete, true);
+});
+
+test("K-BID parser extracts vehicle auction events", () => {
+  const html = `
+    * * *
+    TopGear Auto Auction
+    Begins Closing Tomorrow
+    03/19/2026 08:30 pm
+    1d 8h 11m
+    Active
+    <a href="/auction/123">View Auction</a>
+    TopGear Auto Auction - Weekly Thursday Sale #50
+    880 Southwest 15th St, Forest Lake, MN 55025
+    763-203-7000
+    Vehicles & Marine | 15 Items
+    Cars/Trucks/Motorcycles (15)
+    * * *
+  `;
+
+  const listings = parseKBid(
+    { id: "kbid-public", source: "K-BID" },
+    html,
+    "https://www.k-bid.com/auction/list"
+  );
+
+  assert.equal(listings.length, 1);
+  assert.equal(listings[0].source, "K-BID");
+  assert.equal(listings[0].title, "TopGear Auto Auction - Weekly Thursday Sale #50");
+  assert.equal(listings[0].location, "880 Southwest 15th St, Forest Lake, MN 55025");
+  assert.equal(listings[0].auctionEndsAt, "2026-03-19T20:30:00.000Z");
+  assert.equal(listings[0].url, "https://www.k-bid.com/auction/123");
 });

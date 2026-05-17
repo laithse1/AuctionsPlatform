@@ -138,5 +138,24 @@
     "defaultShippingEstimate": 0,
     "defaultFlags": ["Capital inventory scrape"],
     "defaultLocation": "Unknown"
+  },
+  {
+    "id": "kbid-public",
+    "type": "rendered-crawler",
+    "enabled": true,
+    "source": "K-BID",
+    "urls": ["https://www.k-bid.com/auction/list?sort_field=end&affiliate=0&closing=&closing_mask=&distance_radius=-1&distance_zip=&auction_categories%5B%5D=14"],
+    "respectRobots": false,
+    "requestDelayMs": 10000,
+    "maxPages": 1,
+    "maxListingsPerPage": 30,
+    "fallbackToStatic": true,
+    "scrollToLoad": true,
+    "extraWaitMs": 1500,
+    "defaultAuctionFee": 0,
+    "defaultBrokerFee": 0,
+    "defaultShippingEstimate": 0,
+    "defaultFlags": ["K-BID vehicle auction event"],
+    "defaultLocation": "Unknown"
   }
 ]

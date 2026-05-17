@@ -39,7 +39,7 @@ AuctionHub aims to become the single workbench for auction buyers:
 | Area | What Works Today |
 | --- | --- |
 | Ingestion | Sample feeds, JSON feeds, static public-page crawling, rendered Playwright crawling |
-| Providers | Configured for Copart, IAAI, SCA, A Better Bid, AutoBidMaster, Cars4Bid, Capital Auto Auction |
+| Providers | Configured for Copart, IAAI, SCA, A Better Bid, AutoBidMaster, Cars4Bid, Capital Auto Auction, K-BID |
 | Intelligence | Deal score, risk score, confidence score, risk reasons, buyer notes |
 | Dedupe | VIN dedupe plus normalized make/model/year/location keys |
 | API | Health, sources, listings, score filters, protected ingestion refresh |

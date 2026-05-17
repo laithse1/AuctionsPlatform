@@ -185,6 +185,72 @@ function parseCapitalAutoAuction(provider, html, pageUrl) {
   return dedupe(listings.filter(Boolean)).slice(0, provider.maxListingsPerPage || 30);
 }
 
+function parseKBid(provider, html, pageUrl) {
+  const text = html
+    .replace(/<script[\s\S]*?<\/script>/gi, " ")
+    .replace(/<style[\s\S]*?<\/style>/gi, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&#039;/g, "'")
+    .replace(/\s+/g, " ");
+  const blocks = text.split(/\*\s+\*\s+\*/g);
+  const hrefs = [...html.matchAll(/<a[^>]+href="([^"]+)"[^>]*>\s*(?:View Auction)?\s*<\/a>/gi)].map((match) => absoluteUrl(match[1], pageUrl));
+  const listings = [];
+
+  for (const block of blocks) {
+    if (!/Vehicles\s*&\s*Marine/i.test(block) || !/View Auction/i.test(block)) continue;
+
+    const date = matchFirst(block, /(\d{2}\/\d{2}\/\d{4}\s+\d{2}:\d{2}\s+(?:am|pm))/i);
+    const itemCount = numberFrom(matchFirst(block, /Vehicles\s*&\s*Marine[^|]*\|\s*(\d+)\s+Items/i));
+    const affiliate = cleanText(matchFirst(block, /^(.+?)\s+Begins Closing/i));
+    const titleAndLocation = block.match(/Active\s+View Auction\s+(?<title>.+?)\s+(?<location>\d{1,6}.+?,\s*[A-Z]{2}\s*\d{5})/i);
+
+    if (!titleAndLocation?.groups) continue;
+
+    const title = cleanText(titleAndLocation.groups.title);
+    const location = cleanText(titleAndLocation.groups.location);
+    const url = hrefs[listings.length] || pageUrl;
+
+    listings.push({
+      source: provider.source || provider.id,
+      sourceListingId: `${provider.id}-${title}-${date}`,
+      title,
+      year: 0,
+      make: "",
+      model: "",
+      trim: "",
+      vin: "",
+      location,
+      damage: "Auction event",
+      titleType: "Vehicles & Marine",
+      mileage: 0,
+      currentBid: 0,
+      auctionFee: numberFrom(provider.defaultAuctionFee),
+      brokerFee: numberFrom(provider.defaultBrokerFee),
+      shippingEstimate: numberFrom(provider.defaultShippingEstimate),
+      auctionEndsAt: parseUsDateTime(date),
+      status: "active",
+      flags: [`${itemCount || "Multiple"} items`, affiliate].filter(Boolean),
+      url,
+      image: ""
+    });
+  }
+
+  return dedupe(listings).slice(0, provider.maxListingsPerPage || 30);
+}
+
+function parseUsDateTime(value) {
+  const match = cleanText(value).match(/(?<month>\d{2})\/(?<day>\d{2})\/(?<year>\d{4})\s+(?<hour>\d{2}):(?<minute>\d{2})\s+(?<ampm>am|pm)/i);
+  if (!match?.groups) return null;
+
+  let hour = Number(match.groups.hour);
+  if (match.groups.ampm.toLowerCase() === "pm" && hour < 12) hour += 12;
+  if (match.groups.ampm.toLowerCase() === "am" && hour === 12) hour = 0;
+
+  return `${match.groups.year}-${match.groups.month}-${match.groups.day}T${String(hour).padStart(2, "0")}:${match.groups.minute}:00.000Z`;
+}
+
 function parseCapitalHtmlCards(provider, html, pageUrl) {
   return html
     .split(/<div class="card catalog__card"/i)
@@ -273,7 +339,8 @@ const parsers = {
   "iaai-public": parseGeneric,
   "cars4bid-public": parseGeneric,
   "autobidmaster-public": parseGeneric,
-  "capitalautoauction-public": parseCapitalAutoAuction
+  "capitalautoauction-public": parseCapitalAutoAuction,
+  "kbid-public": parseKBid
 };
 
 function parseProviderListings(provider, html, pageUrl) {
@@ -281,4 +348,4 @@ function parseProviderListings(provider, html, pageUrl) {
   return parser(provider, html, pageUrl);
 }
 
-module.exports = { parseProviderListings, parseGeneric, fromCard, parseCapitalAutoAuction };
+module.exports = { parseProviderListings, parseGeneric, fromCard, parseCapitalAutoAuction, parseKBid };
